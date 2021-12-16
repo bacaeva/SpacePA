@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Удаление продукта</title>
+</head>
+<body>
+ <h1>вы действительно хотите удалить</h1>
+ <form method="post">
+     {%csrf_token %}
+     <button type="submit">удаление</button>
+     <a href="{%url 'product-details' product.id%}"><button type="button">Отмена</button></a>
+ </form>
+</body>
+</html>
