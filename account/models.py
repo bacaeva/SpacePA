@@ -1,7 +1,7 @@
 
 from django.contrib.auth.base_user import AbstractBaseUser, BaseUserManager
 from django.db import models
-
+from django.utils.crypto import get_random_string
 
 
 class UserManager(BaseUserManager):
@@ -47,3 +47,7 @@ class User(AbstractBaseUser):
     def has_perm(self, obj=None):
         return self.is_staff
 
+    def create_activation_code(self):
+        code = get_random_string(8)
+        self.activation_code = code
+        self.save()
